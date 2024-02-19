@@ -1,0 +1,42 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block title %}Entrainements{% endblock %}
+
+{% block content %}
+    <h1>Entrainements</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entrainement.id }}</td>
+            </tr>
+            <tr>
+                <th>Objectif</th>
+                <td>{{ entrainement.objectif }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ entrainement.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Periode</th>
+                <td>{{ entrainement.periode }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ entrainement.duree }}</td>
+            </tr>
+            <tr>
+                <th>Nom_entrainement</th>
+                <td>{{ entrainement.nomEntrainement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entrainements_index') }}">back to list</a>
+
+    <a href="{{ path('app_entrainements_edit', {'id': entrainement.id}) }}">edit</a>
+
+    {{ include('entrainements/_delete_form.html.twig') }}
+{% endblock %}

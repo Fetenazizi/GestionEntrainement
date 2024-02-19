@@ -1,0 +1,38 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block title %}Exercices{% endblock %}
+
+{% block content %}
+    <h1>Exercices</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ exercice.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_exercice</th>
+                <td>{{ exercice.nomExercice }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ exercice.type }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ exercice.duree }}</td>
+            </tr>
+            <tr>
+                <th>Nombres_de_fois</th>
+                <td>{{ exercice.nombresDeFois }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exercices_index') }}">back to list</a>
+
+    <a href="{{ path('app_exercices_edit', {'id': exercice.id}) }}">edit</a>
+
+    {{ include('exercices/_delete_form.html.twig') }}
+{% endblock %}

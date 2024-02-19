@@ -1,0 +1,72 @@
+{% extends 'FrontOffice/bfo.html copy.twig' %}
+
+{% block content %}
+ <div class="image-container">
+
+    {% for entrainement in entrainements %}
+            
+              {% if entrainement.objectif == 'Se muscler' %}
+<a href="{{ path('app_entrainements_listExercices', {'id': entrainement.id}) }}"> 
+           
+        <div class="img-container">
+            <p class="text-over-image-pertepoids">{{ entrainement.objectif }} </p>
+            <p class="text-over-img">{{ entrainement.nomEntrainement }}</p>
+            <p class="text-over-image-bottom">{{ entrainement.duree }} semaines . {{ entrainement.niveau }}</p>
+            <img src="{{ asset('assets/semuscler.jpg') }}" alt="Description de l'image" class="img1">
+        </div>
+          
+<!--
+           <a href="{{ path('imagee2') }}"> 
+        <div class="img-container">
+            <p class="text-over-image-pertepoids">se muscler</p>
+            <p class="text-over-img">Strong Back</p>
+            <p class="text-over-image-bottom">4 semaines . Expert</p>
+            <img src="{{ asset('assets/semuscler.jpg') }}" alt="Description de l'image" class="img1">
+          </a>
+        </div>-->
+       {% endif %}
+        
+
+        
+        {% endfor %}
+
+{% if entrainements is empty %}
+   
+            <tr>
+                <td colspan="7">pas de résultats</td>
+            </tr>
+{% endif %}
+    
+          
+
+       
+    </div>
+   
+
+
+{% for entrainement in entrainements %}
+            
+              {% if entrainement.objectif != 'Se muscler' %}
+<a href="{{ path('app_entrainements_listExercices', {'id': entrainement.id}) }}"> 
+           
+        <div class="img-container">
+            <p class="text-over-image-pertepoids">{{ entrainement.objectif }} </p>
+            <p class="text-over-img">{{ entrainement.nomEntrainement }}</p>
+            <p class="text-over-image-bottom">{{ entrainement.duree }} semaines . {{ entrainement.niveau }}</p>
+            <img src="{{ asset('assets/pertedepo.jpg') }}" alt="Description de l'image" class="img1">
+        </div>
+          
+ 
+       {% endif %}
+      
+        {% endfor %}
+
+
+    
+        
+   
+    </div>
+
+    <a href="{{path('app_entrainements_search')}}" class="btn btn-secondary">Nouvelle Recherche</a>
+    <link rel="stylesheet" href="{{ app.request.schemeAndHttpHost ~ asset('assets/css/styles.css') }}">
+{% endblock %}

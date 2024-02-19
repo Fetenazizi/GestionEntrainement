@@ -1,0 +1,13 @@
+{% extends 'BackOffice/bbo.html copy.twig' %}
+
+{% block title %}Entrainements index{% endblock %}
+
+{% block content %}
+  <div class="main-panel">
+        <!-- Contenu du formulaire d'entraînement -->
+        {{ include('entrainements/_form.html.twig') }}
+        
+        <!-- Lien pour revenir à la liste des entraînements -->
+         <a href="{{ path('app_entrainements_index') }}" class="btn btn-secondary">Retour à la liste</a>
+    </div>  
+{% endblock %}

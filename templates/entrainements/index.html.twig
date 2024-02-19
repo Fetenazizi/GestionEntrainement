@@ -1,0 +1,62 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block title %}Entrainements index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <style>
+        /* Additional custom styles for DataTables */
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#entrainementsTable').DataTable();
+            console.log("yyyyyy");  
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>Entrainements index</h1>
+
+    <table id="entrainementsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Objectif</th>
+                <th>Niveau</th>
+                <th>Periode</th>
+                <th>Duree</th>
+                <th>Nom_entrainement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entrainement in entrainements %}
+            <tr>
+                <td>{{ entrainement.id }}</td>
+                <td>{{ entrainement.objectif }}</td>
+                <td>{{ entrainement.niveau }}</td>
+                <td>{{ entrainement.periode }}</td>
+                <td>{{ entrainement.duree }}</td>
+                <td>{{ entrainement.nomEntrainement }}</td>
+                <td>
+                    <a href="{{ path('app_entrainements_show', {'id': entrainement.id}) }}">show</a>
+                    <a href="{{ path('app_entrainements_edit', {'id': entrainement.id}) }}">edit</a>
+                    <a href="{{ path('app_entrainements_show2', {'id': entrainement.id}) }}">exercice</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entrainements_new') }}">Créer nouveau</a>
+{% endblock %}

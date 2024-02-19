@@ -1,0 +1,22 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block title %}Assign Exercises to Entrainement{% endblock %}
+
+{% block content %}
+    <h1>Assign Exercises to Entrainement</h1>
+
+    <h2>Entrainement Information:</h2>
+    <p>ID: {{ entrainement.id }}</p>
+    <!-- Display other entrainement information as needed -->
+
+    <h2>Select Exercises:</h2>
+    <form method="post" action="{{ path('assign_exercises', {'id': entrainement.id}) }}">
+        {% for exercise in exercises %}
+            <div>
+                <input type="checkbox" id="exercise_{{ exercise.id }}" name="exercises[]" value="{{ exercise.id }}">
+                <label for="exercise_{{ exercise.GetID }}">{{ exercise.getNomExercice() }}</label>
+            </div>
+        {% endfor %}
+        <button type="submit">Assign Selected Exercises</button>
+    </form>
+{% endblock %}

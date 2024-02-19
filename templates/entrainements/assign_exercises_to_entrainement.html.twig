@@ -1,0 +1,70 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block title %}Assign Exercises to Entrainement{% endblock %}
+
+{% block content %}
+    <h1>Assign Exercises to Entrainement</h1>
+
+    <h2>Entrainement Information:</h2>
+  <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entrainement.id }}</td>
+            </tr>
+            <tr>
+                <th>Objectif</th>
+                <td>{{ entrainement.objectif }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ entrainement.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Periode</th>
+                <td>{{ entrainement.periode }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ entrainement.duree }}</td>
+            </tr>
+            <tr>
+                <th>Nom_entrainement</th>
+                <td>{{ entrainement.nomEntrainement }}</td>
+            </tr>
+        </tbody>
+    </table>
+      <h2>Exercices:</h2>
+    {% if entrainement.exercices is not empty %}
+        <ul>
+            {% for exercice in entrainement.exercices %}
+                 <a href="{{ path('app_exercices_show', {'id': exercice.id}) }}">
+                <li>{{ exercice.GetID }} -  Nom Exercices: {{ exercice.getNomExercice }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No exercises assigned to this entrainement.</p>
+    {% endif %} 
+
+    <a href="{{ path('app_entrainements_index') }}">back to list</a>
+
+    <a href="{{ path('app_entrainements_edit', {'id': entrainement.id}) }}">edit</a>
+     <a href="{{ path('assign_exercises', {'id': entrainement.id}) }}">ajout exercice</a>
+
+    {{ include('entrainements/_delete_form.html.twig') }}
+   
+    <!-- Display other entrainement information as needed -->
+<!--
+    <h2>Select Exercises:</h2>
+    
+        {% for exercise in exercises %}
+            <div>
+                <input type="checkbox" id="exercise_{{ exercise.id }}" name="exercises[]" value="{{ exercise.id }}">
+                <label for="exercise_{{ exercise.id }}">
+                    {{ exercise.getNomExercice() }}
+                </label>
+            </div>
+        {% endfor %}
+
+  -->
+{% endblock %}

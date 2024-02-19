@@ -1,0 +1,100 @@
+.resize-image {
+    width: 80%; /* Vous pouvez ajuster cette valeur pour réduire la taille de l'image */
+}
+
+.image-link {
+    position: relative; /* Pour permettre le positionnement absolu des phrases */
+    display: inline-block; /* Pour que le lien encadre l'image et les phrases */
+}
+
+.image-text {
+    position: absolute; /* Pour positionner les phrases par rapport à l'image */
+    bottom: 10px; /* Ajustez cette valeur pour positionner les phrases à votre goût */
+    left: 10px; /* Ajustez cette valeur pour positionner les phrases à votre goût */
+    color: white; /* Couleur du texte */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Poids de la police */
+}
+.img1 {
+    width: 400px;
+    height: auto;
+    display: inline-block; /* Pour aligner l'image à gauche */
+    margin-top: 200px;
+}
+.img2 {
+    width: 400px;
+    height: auto;
+ 
+  
+    margin-top: 200px;
+}
+
+
+.img3 {
+    width: 350px;
+    height: auto;
+    display: inline-block; /* Pour aligner l'image à gauche */
+    margin-top: 200px;}
+
+.image-container {
+    text-align:left; /* Aligne les images horizontalement */
+}
+.image-wrapper {
+    display: block; /* Affiche chaque image l'une sous l'autre */
+    margin-bottom: 20px; /* Espacement entre chaque image */
+}
+
+.text-over-image {
+    position: absolute;
+    top: 50%; /* Positionne le haut du texte au milieu de l'image */
+    left: 50%; /* Positionne le texte à partir du bord gauche de l'image */
+    transform: translate(-50%, -50%); /* Centre le texte exactement sur l'image */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.img-container {
+    position: relative; /* Permet de positionner le texte par rapport à cet élément */
+    display: inline-block; /* Pour que le conteneur s'adapte à la taille de l'image */
+}
+
+.text-over-img {
+    position: absolute;
+    bottom: 30px; /* Positionnement au bas de l'image */
+    left: 10px; /* Positionnement à l'extrême gauche */
+    color: white; /* Couleur du texte */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+}
+.text-over-image-bottom {
+    position: absolute;
+    bottom: 10px; /* Positionnement au bas de l'image */
+    left: 10px; /* Positionnement à gauche de l'image */
+    color: white; /* Couleur du texte */
+    font-size: 10px; /* Taille de la police */
+    font-weight: 300;/*fine */
+}
+.text-over-image-pertepoids {
+    position: absolute;
+    top: 160px; /* Ajustez la position verticale */
+    left: _160px; /* Ajustez la position horizontale */
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Style pour le texte superposé */
+.text-overlay {
+    position: absolute; /* Position absolue par rapport au parent */
+    top: 50%; /* Positionne le haut du texte au milieu de l'image */
+    left: 50%; /* Positionne le texte à partir du bord gauche de l'image */
+    transform: translate(-50%, -50%); /* Centre le texte exactement sur l'image */
+    color: white; /* Couleur du texte */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    text-align: center; /* Alignement centré */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    padding: 10px 15px; /* Espacement intérieur du texte */
+}

@@ -1,0 +1,28 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block content %}
+
+{% if errors is not empty %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
+    {{ form_start(form) }}
+
+     {{ form_row(form.nom_entrainement) }}
+    {{ form_row(form.objectif) }} {# Afficher les autres champs de formulaire #}
+    {{ form_row(form.niveau) }}
+    {{ form_row(form.periode) }}
+    {{ form_row(form.duree) }}
+    
+   
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_entrainements_index') }}">Retour à la liste</a>
+
+    <link rel="stylesheet" href="{{ asset('chemin/vers/votre/fichier/styles.css') }}">
+{% endblock %}

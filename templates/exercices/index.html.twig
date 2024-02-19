@@ -1,0 +1,58 @@
+{% extends 'BackOffice/bbo2.html.twig' %}
+
+{% block title %}Exercices index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <style>
+        /* Additional custom styles for DataTables */
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#exercicesTable').DataTable();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>Exercices index</h1>
+
+    <table id="exercicesTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom exercice</th>
+                <th>Type</th>
+                <th>Durée</th>
+                <th>Nombres de fois</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercice in exercices %}
+            <tr>
+                <td>{{ exercice.id }}</td>
+                <td>{{ exercice.nomExercice }}</td>
+                <td>{{ exercice.type }}</td>
+                <td>{{ exercice.duree }}</td>
+                <td>{{ exercice.nombresDeFois }}</td>
+                <td>
+                    <a href="{{ path('app_exercices_show', {'id': exercice.id}) }}">show</a>
+                    <a href="{{ path('app_exercices_edit', {'id': exercice.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exercices_new') }}">Create new</a>
+{% endblock %}

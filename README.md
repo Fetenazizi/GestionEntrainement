@@ -1,1 +1,1 @@
-# GestionEntrainement
+# SyncStars_2024
