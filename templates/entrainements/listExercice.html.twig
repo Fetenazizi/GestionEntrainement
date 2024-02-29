@@ -1,31 +1,26 @@
 {% extends 'FrontOffice/bfo.html copy.twig' %}
 
 {% block content %}
-
-
 <div class="image-container">
-
   {% if entrainement.exercices is not empty %}
-        <ul>
-            {% for exercice in entrainement.exercices %}
-
-                   
-    <div class="image-wrapper">
+    <ul>
+      {% for exercice in entrainement.exercices %}
+      <div class="image-wrapper">
         <img src="{{ asset('assets/' ~ exercice.id ~ '.gif') }}" alt="Description de l'image" class="img2">
-      <div class="text-under-image">Nom de l'exercice: {{ exercice.getNomExercice }}</div> <!-- Phrase ajoutée -->
-          <div class="text-under-image"> Dureé: {{ exercice. getDuree }}</div> <!-- Phrase ajoutée -->
-           <div class="text-under-image"> Nombres de fois: {{ exercice.getNombresDeFois }}</div> <!-- Phrase ajoutée -->
-    </div>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p> Aucun exercice assigné à cet entraînement.</p>
-    {% endif %} 
-
- 
-   
+        <div class="text-under-image">Nom de l'exercice: {{ exercice.getNomExercice }}</div> <!-- Phrase ajoutée -->
+        <div class="text-under-image"> Durée: {{ exercice.getDuree }}</div> <!-- Phrase ajoutée -->
+        <div class="text-under-image"> Nombre de fois: {{ exercice.getNombresDeFois }}</div> <!-- Phrase ajoutée -->
+        <div class="text-under-image"> <!-- Afficher les critiques et leurs ratings -->
+          {% for review in exercice.Reviews%}
+            {{ ReviewEx.user }} a donné une note de {{ ReviewEx.rating }} étoiles: {{ ReviewEx.comment }} <br>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p> Aucun exercice assigné à cet entraînement.</p>
+  {% endif %}
 </div>
 <link rel="stylesheet" href="{{ app.request.schemeAndHttpHost ~ asset('assets/css/styles.css') }}">
-
-
 {% endblock %}

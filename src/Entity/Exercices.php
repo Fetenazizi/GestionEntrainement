@@ -30,9 +30,13 @@ class Exercices
     #[ORM\ManyToMany(targetEntity: Entrainements::class, mappedBy: 'exercices')]
     private Collection $entrainements;
 
+    #[ORM\OneToMany(mappedBy: 'exercice', targetEntity: ReviewEx::class)]
+    private Collection $reviews;
+
     public function __construct()       
     {
         $this->entrainements = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,6 +114,36 @@ class Exercices
     {
         if ($this->entrainements->removeElement($entrainement)) {
             $entrainement->removeExercice($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ReviewEx>
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(ReviewEx $review): static
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews->add($review);
+            $review->setExercice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(ReviewEx $review): static
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getExercice() === $this) {
+                $review->setExercice(null);
+            }
         }
 
         return $this;
